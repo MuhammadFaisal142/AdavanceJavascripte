@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object Literals</title>
+    <script>
+        let fname="Faisal";
+        let lname="saith";
+        var obj1={
+            [fname]: "faisalsaith",
+            lname,
+            detail(){
+                return `${this.Faisal} is student of ${this.lname}`
+            }
+        }
+        console.log(obj1);
+        console.log(obj1.detail());
+        console.log(obj1['detail']());
+
+        function student2(name,course){
+            return{name,course};
+        }
+        console.log(student2(fname,lname));
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
