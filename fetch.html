@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch API</title>
+</head>
+<body>
+    
+
+<h1>Hello</h1>
+
+
+<script>
+    function myFunction() {
+        let config = {
+            headers: {
+                "keycode": "19C8C0D20C424413BBE8B0E3E3"
+            }
+        };
+        // Make an HTTP GET request with custom headers
+        fetch("http://api.coasteramer.com/api/Product/GetPricelist", config)
+            .then(response => response.json()) // Assuming you expect JSON data
+            .then(data => {
+                for (var data1 in data) {
+                    document.write(data[data1].PriceCode);
+                    var priceList = data[data1].PriceList; // Access the PriceList array
+                    for (var i = 0; i < priceList.length; i++) {
+    document.write('<table><tbody>');
+    document.write('<tr><td>WarehouseCode</td><td>ProductNumber</td><td>Price</td><td>MAP</td></tr>');
+    document.write('<tr><td>' + priceList[i].WarehouseCode + '</td></tr>');
+    document.write('<tr><td>' + priceList[i].ProductNumber + '</td></tr>');
+    document.write('<tr><td>' + priceList[i].Price + '</td></tr>');
+    document.write('<tr><td>' + priceList[i].MAP + '</td></tr>');
+    document.write('</tbody></table>');
+}
+
+                }
+
+                console.log(data);
+            })
+            .catch(error => {
+                console.error("Error:", error);
+            });
+    }
+
+    // Call the function
+    myFunction();
+</script>
+
+</body>
+</html>

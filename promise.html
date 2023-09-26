@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advance Promise</title>
+    <script>
+        // let complete = false;// you set here true or false
+
+        function prom(complete){
+            return new Promise(function(resolve , reject){
+            if(complete){
+                resolve("I am successfull .");
+                $.get("https://jsonplaceholder.typicode.com/posts" ,function(data){
+                    console.log(data);
+                })
+            }else{
+                reject('I am failed.');
+            }
+        });
+        }
+        
+        let onfullfilment=(result)=>{
+            console.log(result);
+        }
+        let onRejection=(error)=>{
+            console.log(error);
+        }
+        prom(true).then(onfullfilment);
+        prom(false).catch(onRejection);
+
+        // console.log(prom(true));
+        
+    </script>
+</head>
+<body>
+    <h1>This is promise page </h1>
+</body>
+</html>
